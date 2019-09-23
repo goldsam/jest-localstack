@@ -1,0 +1,84 @@
+{
+  "name": "@goldsam/jest-localstack",
+  "version": "0.1.0",
+  "description": "Run your tests against localstack",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/goldsam/jest-localstack.git"
+  },
+  "homepage": "https://github.com/goldsam/jest-localstack#readme",
+  "bugs": {
+    "url": "https://github.com/goldsam/jest-localstack/issues"
+  },
+  "author": {
+    "name": "Sam Goldmann",
+    "email": "sam.goldmann@gmail.com",
+    "url": "https://github.com/goldsam"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "keywords": [
+    "jest",
+    "aws",
+    "localstack",
+    "jest preset",
+    "jest environment"
+  ],
+  "scripts": {
+    "coverage": "jest --coverage",
+    "lint": "eslint . --fix",
+    "test": "cross-env ENVIRONMENT=local jest . --runInBand"
+  },
+  "files": [
+    "environment.js",
+    "jest-preset.js",
+    "setup.js",
+    "teardown.js"
+  ],
+  "main": "jest-preset.js",
+  "dependencies": {
+    "cwd": "0.10.0",
+    "debug": "^4.1.1",
+    "dockerode": "^2.5.8"
+  },
+  "peerDependencies": {
+    "aws-sdk": "2.x.x"
+  },
+  "devDependencies": {
+    "aws-sdk": "2.528.0",
+    "cross-env": "^5.2.1",
+    "eslint": "^6.4.0",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-plugin-jest": "^22.17.0",
+    "eslint-plugin-jest-formatting": "^1.1.0",
+    "eslint-plugin-json-format": "^2.0.1",
+    "eslint-plugin-prettier": "^3.1.1",
+    "husky": "3.0.5",
+    "jest": "24.9.0",
+    "lint-staged": "9.2.5",
+    "prettier": "^1.18.2"
+  },
+  "jest": {
+    "preset": "./jest-preset.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{html,json,md,yml}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

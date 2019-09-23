@@ -1,0 +1,67 @@
+{
+  "extends":[
+    "eslint:recommended",
+    "plugin:jest-formatting/strict",
+    "plugin:jest/style",
+    "plugin:jest/recommended",
+    "prettier"
+  ],
+  "plugins": ["jest-formatting", "jest", "json-format", "prettier"],
+  "env": {
+    "node": true,
+    "jest": true,
+    "es6": true,
+    "jest/globals": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "rules": {
+    "prettier/prettier": "error",
+    "padding-line-between-statements": [
+      "error",
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": "return"
+      },
+      {
+        "blankLine": "always",
+        "prev": ["if", "const", "let", "var"],
+        "next": "if"
+      },
+      {
+        "blankLine": "always",
+        "prev": ["if"],
+        "next": ["const", "let", "var"]
+      },
+      {
+        "blankLine": "always",
+        "prev": ["import"],
+        "next": "*"
+      },
+      {
+        "blankLine": "never",
+        "prev": "import",
+        "next": "import"
+      }
+    ],
+    "prefer-destructuring": [
+      "error",
+      { "array": false, "object": true },
+      { "enforceForRenamedProperties": false }
+    ],
+    "sort-imports": [
+      "error",
+      {
+        "ignoreCase": false,
+        "ignoreDeclarationSort": true,
+        "ignoreMemberSort": false,
+        "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
+      }
+    ],
+    "prefer-template": "error",
+    "prefer-object-spread": "error"
+  }
+}
