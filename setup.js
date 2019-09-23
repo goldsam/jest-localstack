@@ -44,10 +44,8 @@ module.exports = async function() {
     .then(container => initializeServices(container, config, services))
     .catch(err => {
       const container = global.__LOCALSTACK__;
-      console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
-      if (container) {
-        console.log('BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB');
 
+      if (container) {
         return global.__LOCALSTACK__.kill().then(() => Promise.reject(err));
       }
       throw err;
