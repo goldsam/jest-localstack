@@ -27,18 +27,24 @@ module.exports = async function() {
   const services = getServices(config);
   var docker = new Docker();
 
-  return docker
-    .createContainer({
-      Image: config.image,
-      AttachStdin: false,
-      AttachStdout: true,
-      AttachStderr: true,
-      Tty: true,
-      OpenStdin: false,
-      StdinOnce: false,
-      Env: buildEnv(config),
-      ...buildExposedPortsAndHostConfig(services)
+  await docker
+    .pull(config.image)
+    .catch(err => {
+      throw err;
     })
+    .then(() =>
+      docker.createContainer({
+        Image: config.image,
+        AttachStdin: false,
+        AttachStdout: true,
+        AttachStderr: true,
+        Tty: true,
+        OpenStdin: false,
+        StdinOnce: false,
+        Env: buildEnv(config),
+        ...buildExposedPortsAndHostConfig(services)
+      })
+    )
     .then(container => (global.__LOCALSTACK__ = container).start())
     .then(container => waitForReady(container, config))
     .then(container => initializeServices(container, config, services))
