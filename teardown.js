@@ -6,7 +6,7 @@ module.exports = async function() {
   const container = global.__LOCALSTACK__;
 
   if (container) {
-    container.remove({
+    await container.remove({
       force: true
     });
   }
