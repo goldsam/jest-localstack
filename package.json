@@ -47,7 +47,7 @@
     "aws-sdk": "2.x.x"
   },
   "devDependencies": {
-    "aws-sdk": "2.528.0",
+    "aws-sdk": "2.1693.0",
     "cross-env": "^5.2.1",
     "eslint": "^6.4.0",
     "eslint-config-prettier": "^6.3.0",
